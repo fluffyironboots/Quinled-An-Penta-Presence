@@ -1,0 +1,90 @@
+substitutions:
+  buzzer_pin: GPIO19  # untested
+  led_pin: GPIO2
+  pir_pin: GPIO23
+  sen0395_io_pin: GPIO0 # not the best pin to use but the only one that makes sense on the an penta
+  uart_rx_pin: GPIO21 # GPIO 1 and 3 are used for i2c on the an penta
+  uart_tx_pin: GPIO22
+
+esphome:
+  name: ${name}
+  platform: ESP32
+  board: mhetesp32devkit
+
+i2c:
+  sda: GPIO1
+  scl: GPIO3
+
+binary_sensor:
+  - platform: gpio
+    pin: 34
+    id: pin_34
+    name: "Switch1"
+#    on_press:
+#    - light.toggle:
+#        id: LED1
+  - platform: gpio
+    pin: 35
+    id: pin_35
+    name: "Switch2"
+#    on_press:
+#    - light.toggle:
+#        id: LED2
+        
+  - platform: gpio
+    pin: 39
+    id: pin_39
+    name: "Switch3"
+#    on_press:
+#    - light.toggle:
+#        id: LED3
+        
+output:
+  - platform: ledc
+    pin: 14
+    frequency: 20000Hz
+    id: LED_channel_1
+    max_power: 0.9
+  - platform: ledc
+    pin: 13
+    frequency: 20000Hz
+    id: LED_channel_2
+  - platform: ledc
+    pin: 12
+    frequency: 20000Hz
+    id: LED_channel_3
+    max_power: 0.5
+  - platform: ledc
+    pin: 4
+    frequency: 20000Hz
+    id: LED_channel_4
+  - platform: ledc
+    pin: 2
+    frequency: 20000Hz
+    id: LED_channel_5
+light:
+  - platform: rgb
+    name: "${name}_rgb"
+    id: "${name}_rgb"
+    red: LED_channel_1
+    green: LED_channel_2
+    blue: LED_channel_3
+    default_transition_length: 3s
+    restore_mode: RESTORE_DEFAULT_OFF
+  - platform: cwww
+    name: "${name}_cwww"
+    id: "${name}_cwww"
+    cold_white: LED_channel_4
+    warm_white: LED_channel_5
+    cold_white_color_temperature: 6000 K
+    warm_white_color_temperature: 3000 K
+    default_transition_length: 3s
+    restore_mode: RESTORE_DEFAULT_OFF
+    constant_brightness: true
+
+sensor:
+  - platform: internal_temperature
+    name: "CPU Temperature"
+  - platform: uptime
+    name: "${name}_Uptime Sensor"
+

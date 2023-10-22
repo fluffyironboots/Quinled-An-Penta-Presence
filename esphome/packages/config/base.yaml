@@ -6,7 +6,7 @@ esphome:
   friendly_name: "${friendly_name}"
 
   project:
-    name: "Schluggi.AIOsense"
+    name: "FluffyIronBoots.AIOsense"
     version: "${version}"
 
 logger:

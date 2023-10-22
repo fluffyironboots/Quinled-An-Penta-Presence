@@ -27,32 +27,34 @@ substitutions:
 
 packages:
   remote_package:
-    url: https://github.com/schluggi/AIOsense
+    url: https://github.com/fluffyironboots/AIOsense
     ref: main
     refresh: 1d
     files:
       - esphome/packages/config/base.yaml
 
       # --- select your board ---
-      - esphome/packages/config/esp32-c3-mini.yaml
+      # - esphome/packages/config/esp32-c3-mini.yaml
+      - esphome/packages/config/quinled-an-penta.yaml
       # - esphome/packages/config/esp32-d1-mini.yaml
       # - esphome/packages/config/esp32-s2-mini.yaml
       # - esphome/packages/config/esp8266-d1-mini.yaml
 
       # --- select your sensors ---
-      - esphome/packages/sensors/bh1750.yaml
+      # - esphome/packages/sensors/bh1750.yaml
       # - esphome/packages/sensors/buzzer.yaml  # AIOsense >= 2.1.x only
       # - esphome/packages/sensors/bme280.yaml  # enable for bme280
-      - esphome/packages/sensors/bme680.yaml  # disable for bme280
+      # - esphome/packages/sensors/bme680.yaml  # disable for bme280
       # - esphome/packages/sensors/bme680_bsec.yaml  # does not work yet
-      - esphome/packages/sensors/occupancy.yaml  # only if pir & mmWave are on
-      - esphome/packages/sensors/pir.yaml
-      - esphome/packages/sensors/rgb_led.yaml  # esp32-c3-mini only
+      # - esphome/packages/sensors/occupancy.yaml  # only if pir & mmWave are on
+      # - esphome/packages/sensors/pir.yaml
+      # - esphome/packages/sensors/rgb_led.yaml  # esp32-c3-mini only
       # - esphome/packages/sensors/led.yaml  # d1-mini only
 
       # --- select your radar sensor ---
       # - esphome/packages/sensors/ld2410.yaml
       - esphome/packages/sensors/sen0395.yaml
+      - esphome/packages/sensors/sht3xd.yaml
 
 
 # Enable Home Assistant API

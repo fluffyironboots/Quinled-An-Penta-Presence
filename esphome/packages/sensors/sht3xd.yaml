@@ -1,0 +1,8 @@
+sensor:
+  - platform: sht3xd
+    temperature:
+      name: "${name}_Temperature"
+    humidity:
+      name: "${name}_Room Humidity"
+    address: 0x44
+    update_interval: 30s

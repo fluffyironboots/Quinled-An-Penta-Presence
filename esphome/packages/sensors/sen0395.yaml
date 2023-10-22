@@ -9,9 +9,50 @@ binary_sensor:
     name: "mmWave"
     id: motion_mmwave
     device_class: occupancy
+    - if:
+        condition:
+          #with pullup logic is reversed
+          lambda: !lambda |-
+            return "${$sen0395_io_pin}" != "GPIO0";
+        then:
+          filters:
+            - invert:
     pin:
       number: "${sen0395_io_pin}"
-      mode: INPUT_PULLDOWN
+      - if:
+          condition:
+            #shouldnt pull gpio0 down since it has a internal pullup
+            lambda: !lambda |-
+              return "${$sen0395_io_pin}" != "GPIO0";
+          then:
+            mode: INPUT_PULLDOWN
+
+# reverse logic of sen0395 gpio pin so it's default high to meet requirement of gpio0 being high at boot
+# (should work without this but safe is safe)
+- if:
+  condition:
+    lambda: !lambda |-
+            return "${$sen0395_io_pin}" == "GPIO0";
+        then:
+          esphome:
+            on_boot:
+              priority: 600
+              then:
+                - switch.turn_off: mmwave_sensor
+                - delay: 1s
+                - uart.write: "setGpioMode 2 0"
+                - delay: 1s
+                - uart.write: "saveConfig"
+                - delay: 3s
+                - switch.turn_on: mmwave_sensor
+              else:
+                - switch.turn_off: mmwave_sensor
+                - delay: 1s
+                - uart.write: "setGpioMode 2 1"
+                - delay: 1s
+                - uart.write: "saveConfig"
+                - delay: 3s
+                - switch.turn_on: mmwave_sensor
 
 switch:
   - platform: template
