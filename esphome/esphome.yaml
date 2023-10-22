@@ -28,7 +28,7 @@ substitutions:
 packages:
   remote_package:
     url: https://github.com/fluffyironboots/AIOsense
-    ref: main
+    ref: master
     refresh: 1d
     files:
       - esphome/packages/config/base.yaml
