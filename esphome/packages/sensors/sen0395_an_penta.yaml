@@ -3,6 +3,7 @@ external_components:
       type: git
       url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence
       ref: master
+    components: [ leapmmw ]
 
 esphome:
   name: ${name}
