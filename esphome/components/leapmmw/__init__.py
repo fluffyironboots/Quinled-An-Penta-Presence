@@ -5,7 +5,7 @@ from esphome.const import CONF_ID
 
 DEPENDENCIES = ['uart']
 
-leapmmw_ns = cg.esphome_ns.namespace('leapmmw')
+leapmmw_ns = cg.esphome_ns.namespace('leapmmw_ns')
 leapmmwComponent = leapmmw_ns.class_('leapmmw', cg.Component, uart.UARTDevice)
 
 CONFIG_SCHEMA = cv.Schema({
