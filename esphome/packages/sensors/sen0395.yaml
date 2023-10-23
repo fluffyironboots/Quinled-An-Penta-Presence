@@ -1,12 +1,12 @@
 substitutions:
   # include the header file with the UART parsing logic 
-  header_file: /esphome/components/leapmmw/leapmmw.h
+  header_file: leapmmw.h
 
-external_components:
-  - source:
-      type: git
-      url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence.git
-      ref: master
+#external_components:
+#  - source:
+#      type: git
+#      url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence.git
+#      ref: master
 
 esphome:
   name: ${name}
