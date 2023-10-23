@@ -1,6 +1,6 @@
 substitutions:
   # include the header file with the UART parsing logic 
-  header_file: esphopme/header/sen0395.h
+  header_file: esphome/header/sen0395.h
 
 esphome:
   name: ${name}
