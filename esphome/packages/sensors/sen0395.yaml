@@ -1,6 +1,9 @@
-substitutions:
-  # include the header file with the UART parsing logic 
-  header_file: header/sen0395.h
+external_components:
+  - source:
+      type: git
+      url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence
+      ref: master
+    components: [ sen0395 ]
 
 esphome:
   name: ${name}
