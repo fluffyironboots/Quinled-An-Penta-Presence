@@ -1,7 +1,7 @@
 external_components:
   - source:
       type: git
-      url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence
+      url: https://github.com/fluffyironboots/Quinled-An-Penta-Presence.git
       ref: master
     components: [ leapmmw ]
 
