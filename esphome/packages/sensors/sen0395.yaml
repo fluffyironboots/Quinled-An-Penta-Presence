@@ -1,6 +1,6 @@
 substitutions:
   # include the header file with the UART parsing logic 
-  header_file: header/leapmmw_sensor.h
+  header_file: header/leapmmw.h
 
 external_components:
   - source:

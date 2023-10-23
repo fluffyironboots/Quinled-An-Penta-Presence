@@ -1,6 +1,6 @@
 substitutions:
   # include the header file with the UART parsing logic 
-  header_file: header/leapmmw_sensor.h
+  header_file: header/leapmmw.h
 
 external_components:
   - source:
@@ -12,7 +12,7 @@ esphome:
   name: ${name}
   includes:
     - ${header_file}
-    
+
 #logger:
 #  logs:
 #    sensor: DEBUG # reduced logging to minimize web_server target overload..
