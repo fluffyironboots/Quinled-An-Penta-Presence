@@ -53,7 +53,8 @@ packages:
 
       # --- select your radar sensor ---
       # - esphome/packages/sensors/ld2410.yaml
-      - esphome/packages/sensors/sen0395.yaml
+      - esphome/packages/sensors/sen0395_an_penta.yaml
+      #- esphome/packages/sensors/sen0395.yaml
       - esphome/packages/sensors/sht3xd.yaml
 
 
