@@ -7,8 +7,6 @@ external_components:
 
 esphome:
   name: ${name}
-  includes:
-    - ${header_file}
 
 #logger:
 #  logs:
