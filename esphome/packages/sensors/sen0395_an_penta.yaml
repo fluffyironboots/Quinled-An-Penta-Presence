@@ -89,7 +89,7 @@ switch:
 
   - platform: template
     name: "${friendly_name} GPIO1 Config"
-    id: gpio2conf  # do not change
+    id: gpio1conf  # do not change
     entity_category: config
     optimistic: true
     turn_on_action:
