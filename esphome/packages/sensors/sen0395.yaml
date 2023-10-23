@@ -1,6 +1,6 @@
 substitutions:
   # include the header file with the UART parsing logic 
-  header_file: components/leapmmw/leapmmw.h
+  header_file: /esphome/components/leapmmw/leapmmw.h
 
 external_components:
   - source:
