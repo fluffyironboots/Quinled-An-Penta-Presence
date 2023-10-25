@@ -3,8 +3,8 @@ substitutions:
   led_pin: GPIO2
   pir_pin: GPIO23
   sen0395_io_pin: GPIO0 # not the best pin to use but the only one that makes sense on the an penta
-  uart_rx_pin: GPIO3 # GPIO 1 and 3 are used for i2c on the an penta
-  uart_tx_pin: GPIO1
+  uart_rx_pin: GPIO16 # GPIO 1 and 3 are used for i2c on the an penta
+  uart_tx_pin: GPIO17
 
 esphome:
   name: ${name}
@@ -16,8 +16,8 @@ esp32:
     version: recommended
 
 i2c:
-  sda: GPIO21
-  scl: GPIO22
+  sda: GPIO1
+  scl: GPIO3
 
 binary_sensor:
   - platform: gpio
