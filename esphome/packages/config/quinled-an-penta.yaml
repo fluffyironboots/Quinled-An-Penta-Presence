@@ -15,9 +15,9 @@ esp32:
     type: esp-idf
     version: recommended
 
-#i2c:
-#  sda: GPIO1
-#  scl: GPIO3
+i2c:
+  sda: GPIO21
+  scl: GPIO22
 
 binary_sensor:
   - platform: gpio
