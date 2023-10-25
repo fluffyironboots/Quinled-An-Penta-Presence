@@ -14,8 +14,8 @@ logger:
 
 captive_portal:
 
-i2c:
-  scan: true
+#i2c:
+ # scan: true
 
 wifi:
   # Fallback hotspot (captive portal) in case wifi connection fails
