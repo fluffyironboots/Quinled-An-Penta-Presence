@@ -8,8 +8,12 @@ substitutions:
 
 esphome:
   name: ${name}
-  platform: ESP32
+
+esp32:
   board: mhetesp32devkit
+  framework:
+    type: esp-idf
+    version: recommended
 
 i2c:
   sda: GPIO1
