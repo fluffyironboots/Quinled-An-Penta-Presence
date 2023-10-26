@@ -71,7 +71,7 @@ switch:
       - delay: 1s
     turn_off_action:
       - uart.write: "sensorStop\r\n"
-      - delay: 1s
+      - delay: 2s
 
   - platform: template
     name: "led"

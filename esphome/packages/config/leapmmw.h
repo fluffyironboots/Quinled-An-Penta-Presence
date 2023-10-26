@@ -134,7 +134,13 @@ class leapmmw : public PollingComponent, public UARTDevice {
             } else {
               int gpio_state = parse_number<int>(getGpioMode).value();
               ESP_LOGD("custom", "The value of getGpioMode %s is: %i", getGpioPin.c_str(), gpio_state);
-              publishSwitch("gpio" + getGpioPin + "conf", gpio_state);
+              int setgpio_state = -1;
+              if (gpio_state == 1) {
+                setgpio_state = 0;
+              } else if (gpio_state == 0) {
+                setgpio_state = 1;
+              }
+              publishSwitch("gpio" + getGpioPin + "conf", setgpio_state);
             }
           }
         }
