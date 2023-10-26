@@ -73,7 +73,7 @@ switch:
       - delay: 1s
 
   - platform: template
-    name: "${friendly_name} led"
+    name: "led"
     id: led  # do not change
     entity_category: config
     optimistic: true
@@ -95,7 +95,7 @@ switch:
       - switch.turn_on: mmwave_sensor 
 
   - platform: template
-    name: "${friendly_name} GPIO1 Config"
+    name: "gpio1conf"
     id: gpio1conf  # do not change
     entity_category: config
     optimistic: true
@@ -117,7 +117,7 @@ switch:
       - switch.turn_on: mmwave_sensor 
 
   - platform: template
-    name: "${friendly_name} GPIO2 Config"
+    name: "gpio2conf"
     id: gpio2conf  # do not change
     entity_category: config
     optimistic: true
@@ -140,7 +140,7 @@ switch:
 
 number:
   - platform: template
-    name: "${friendly_name} distance"
+    name: "distance"
     id: distance # do not change
     entity_category: config
     min_value: 0.15
@@ -160,7 +160,7 @@ number:
       - switch.turn_on: mmwave_sensor 
       
   - platform: template
-    name: "${friendly_name} latency"
+    name: "latency"
     id: latency # do not change
     entity_category: config
     min_value: 1
@@ -180,7 +180,7 @@ number:
       - switch.turn_on: mmwave_sensor
 
   - platform: template
-    name: "${friendly_name} sensitivity"
+    name: "sensitivity"
     id: sensitivity # do not change
     entity_category: config
     min_value: 0

@@ -23,7 +23,7 @@ class leapmmw : public Component, public UARTDevice {
   void publishSwitch(std::string sensor, int state) {
     auto sens = App.get_switches();
     for(int i = 0; i < sens.size(); i++) {
-      std::string name = sens[i]->get_object_id();
+      std::string name = sens[i]->get_name();
       if(name.size() > 2 && name.find(sensor) !=std::string::npos) {
         sens[i]->publish_state(state);
       }
