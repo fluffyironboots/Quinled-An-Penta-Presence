@@ -4,7 +4,7 @@
 
 class leapmmw : public PollingComponent, public UARTDevice {
  public:
-  leapmmw(UARTComponent *parent) : UARTDevice(parent) {}
+  leapmmw(UARTComponent *parent) : PollingComponent(15000), UARTDevice(parent) {}
   
   float get_setup_priority() const override { return esphome::setup_priority::HARDWARE; }
 
@@ -152,13 +152,9 @@ class leapmmw : public PollingComponent, public UARTDevice {
           }
 
           // leapMMW:/>sensorStart
-          if (getline.substr(0, 18) == "leapMMW:/>saveCfg") {
+          if (getline.substr(0, 21) == "leapMMW:/>saveConfig") {
             ESP_LOGD("custom", "Config saved");
           }
-        }
-
-        if (line.substr(0, 18) == "leapMMW:/>saveCfg") {
-            ESP_LOGD("custom", "Config saved");
         }
 
         if (line.substr(0,5) == "Error"){

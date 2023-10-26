@@ -65,7 +65,7 @@ switch:
     turn_on_action:
       - uart.write: "setUartOutput 1 0\r\n"
       - delay: 1s
-      - uart.write: "saveCfg 0x45670123 0xCDEF89AB 0x956128C6 0xDF54AC89\r\n"
+      - uart.write: "saveConfig\r\n"
       - delay: 1s 
       - uart.write: "sensorStart\r\n"
       - delay: 1s
