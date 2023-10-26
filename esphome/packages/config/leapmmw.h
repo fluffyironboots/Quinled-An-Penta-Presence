@@ -125,13 +125,13 @@ class leapmmw : public Component, public UARTDevice {
 
           // leapMMW:/>getGpioMode
           if (getline.substr(0, 21) == "leapMMW:/>getGpioMode" || getline.substr(0, 11) == "getGpioMode") {
-            std::string getGpioPin = line.substr(12, 1);
-            std::string getGpioMode = line.substr(14, 1);
+            std::string getGpioPin = line.substr(9, 1);
+            std::string getGpioMode = line.substr(11, 1);
             if (getGpioMode.empty()) {
               ESP_LOGD("custom", "Did not find a value for getGpioMode");
             } else {
               int gpio_state = parse_number<int>(getGpioMode).value();
-              ESP_LOGD("custom", "The value of getGpioMode %s is: %i", getGpioPin, gpio_state);
+              ESP_LOGD("custom", "The value of getGpioMode %s is: %i", getGpioPin.c_str(), gpio_state);
               publishSwitch("gpio" + getGpioPin + "conf", gpio_state);
             }
           }
@@ -148,6 +148,15 @@ class leapmmw : public Component, public UARTDevice {
             ESP_LOGD("custom", "sensorStart completed successfully");
             publishSwitch("mmwave_sensor", 1);
           }
+
+          // leapMMW:/>sensorStart
+          if (getline.substr(0, 18) == "leapMMW:/>saveCfg") {
+            ESP_LOGD("custom", "Config saved");
+            publishSwitch("mmwave_sensor", 1);
+          }
+        }
+        if (line.substr(0,5) == "Error"){
+          ESP_LOGD("custom", "Error: %s", getline.c_str());
         }
         getline = buffer; 
       }
