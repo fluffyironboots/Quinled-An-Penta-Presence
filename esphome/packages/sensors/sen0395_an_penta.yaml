@@ -63,14 +63,14 @@ switch:
     entity_category: config
     optimistic: true
     turn_on_action:
-      - uart.write: "setUartOutput 1 0"
+      - uart.write: "setUartOutput 1 0\r\n"
       - delay: 1s
-      - uart.write: "saveCfg 0x45670123 0xCDEF89AB 0x956128C6 0xDF54AC89"
+      - uart.write: "saveCfg 0x45670123 0xCDEF89AB 0x956128C6 0xDF54AC89\r\n"
       - delay: 1s 
-      - uart.write: "sensorStart"
+      - uart.write: "sensorStart\r\n"
     turn_off_action:
-      - uart.write: "sensorStop"
-      - delay: 2s
+      - uart.write: "sensorStop\r\n"
+      - delay: 1s
 
   - platform: template
     name: "${friendly_name} led"
@@ -79,7 +79,7 @@ switch:
     optimistic: true
     turn_on_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setLedMode 1 0"
+      - uart.write: "setLedMode 1 0\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getLedMode 1");
@@ -87,7 +87,7 @@ switch:
       - switch.turn_on: mmwave_sensor
     turn_off_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setLedMode 1 1"
+      - uart.write: "setLedMode 1 1\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getLedMode 1");
@@ -101,7 +101,7 @@ switch:
     optimistic: true
     turn_on_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setGpioMode 1 0"
+      - uart.write: "setGpioMode 1 0\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 1"); 
@@ -109,7 +109,7 @@ switch:
       - switch.turn_on: mmwave_sensor
     turn_off_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setGpioMode 1 1"
+      - uart.write: "setGpioMode 1 1\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 1");
@@ -123,7 +123,7 @@ switch:
     optimistic: true
     turn_on_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setGpioMode 2 0"
+      - uart.write: "setGpioMode 2 0\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 2"); 
@@ -131,7 +131,7 @@ switch:
       - switch.turn_on: mmwave_sensor
     turn_off_action:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "setGpioMode 2 1"
+      - uart.write: "setGpioMode 2 1\r\n"
       - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 2");
@@ -154,7 +154,7 @@ number:
     set_action:
       - switch.turn_off: mmwave_sensor
       - uart.write: !lambda
-          std::string range = "setRange 0 " + str_sprintf("%.2f", x);
+          std::string range = "setRange 0 " + str_sprintf("%.2f", x) + "\r\n";
           return std::vector<unsigned char>(range.begin(), range.end());
       - delay: 1s
       - switch.turn_on: mmwave_sensor 
@@ -174,7 +174,7 @@ number:
     set_action:
       - switch.turn_off: mmwave_sensor
       - uart.write: !lambda
-          std::string setL = "setLatency 0.1 " + str_sprintf("%.0f", x);
+          std::string setL = "setLatency 0.1 " + str_sprintf("%.0f", x) + "\r\n";
           return std::vector<unsigned char>(setL.begin(), setL.end());
       - delay: 1s
       - switch.turn_on: mmwave_sensor
@@ -192,7 +192,7 @@ number:
     set_action:
       - switch.turn_off: mmwave_sensor
       - uart.write: !lambda
-          std::string mss = "setSensitivity " + to_string((int)x);
+          std::string mss = "setSensitivity " + to_string((int)x) + "\r\n";
           return std::vector<unsigned char>(mss.begin(), mss.end());
       - delay: 1s
       - switch.turn_on: mmwave_sensor
@@ -204,7 +204,7 @@ button:
     on_press:
       - uart.write:
           id: uart_bus
-          data: "resetSystem 0"
+          data: "resetSystem 0\r\n"
 
   - platform: template
     name: factory_reset_mmwMCU_${name}
@@ -212,6 +212,6 @@ button:
     entity_category: diagnostic
     on_press:
       - switch.turn_off: mmwave_sensor
-      - uart.write: "resetCfg"
+      - uart.write: "resetCfg\r\n"
       - delay: 1s
       - switch.turn_on: mmwave_sensor

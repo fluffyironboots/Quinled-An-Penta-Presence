@@ -31,7 +31,7 @@ class leapmmw : public Component, public UARTDevice {
   };
 
   void getmmwConf(std::string mmwparam) {
-    mmwparam = mmwparam + "\r";
+    mmwparam = mmwparam + "\r\n";
     write_array(std::vector<unsigned char>(mmwparam.begin(), mmwparam.end()));
   }
 
