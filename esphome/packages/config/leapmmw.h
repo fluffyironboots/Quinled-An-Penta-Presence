@@ -2,10 +2,12 @@
 #include <string>
 
 
-class leapmmw : public Component, public UARTDevice {
+class leapmmw : public PollingComponent, public UARTDevice {
  public:
   leapmmw(UARTComponent *parent) : UARTDevice(parent) {}
   
+  float get_setup_priority() const override { return esphome::setup_priority::HARDWARE; }
+
   void setup() override {
     //
   }
@@ -154,6 +156,11 @@ class leapmmw : public Component, public UARTDevice {
             ESP_LOGD("custom", "Config saved");
           }
         }
+
+        if (line.substr(0, 18) == "leapMMW:/>saveCfg") {
+            ESP_LOGD("custom", "Config saved");
+        }
+
         if (line.substr(0,5) == "Error"){
           ESP_LOGD("custom", "Error: %s", getline.c_str());
         }
@@ -161,4 +168,11 @@ class leapmmw : public Component, public UARTDevice {
       }
     }
   }
+
+  void update() override {
+    getmmwConf("getLedMode 1");
+    getmmwConf("getGpioMode 1");
+    getmmwConf("getGpioMode 2");
+  }
+
 };
