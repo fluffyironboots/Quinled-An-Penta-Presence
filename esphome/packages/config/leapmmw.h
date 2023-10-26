@@ -23,7 +23,7 @@ class leapmmw : public Component, public UARTDevice {
   void publishSwitch(std::string sensor, int state) {
     auto sens = App.get_switches();
     for(int i = 0; i < sens.size(); i++) {
-      std::string name = sens[i]->get_name();
+      std::string name = sens[i]->get_object_id();
       if(name.size() > 2 && name.find(sensor) !=std::string::npos) {
         sens[i]->publish_state(state);
       }
@@ -152,7 +152,6 @@ class leapmmw : public Component, public UARTDevice {
           // leapMMW:/>sensorStart
           if (getline.substr(0, 18) == "leapMMW:/>saveCfg") {
             ESP_LOGD("custom", "Config saved");
-            publishSwitch("mmwave_sensor", 1);
           }
         }
         if (line.substr(0,5) == "Error"){
