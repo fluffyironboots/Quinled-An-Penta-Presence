@@ -85,6 +85,8 @@ switch:
       - delay: 1s
       - uart.write: "setLedMode 1 0\r\n"
       - delay: 1s
+      - uart.write: "saveConfig\r\n"
+      - delay: 1s
       - switch.turn_on: mmwave_sensor
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getLedMode 1");
@@ -92,6 +94,8 @@ switch:
       - switch.turn_off: mmwave_sensor
       - delay: 1s
       - uart.write: "setLedMode 1 1\r\n"
+      - delay: 1s
+      - uart.write: "saveConfig\r\n"
       - delay: 1s
       - switch.turn_on: mmwave_sensor 
       - lambda: |-
@@ -107,6 +111,8 @@ switch:
       - delay: 1s
       - uart.write: "setGpioMode 1 0\r\n"
       - delay: 1s
+      - uart.write: "saveConfig\r\n"
+      - delay: 1s
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 1"); 
       - delay: 1s
@@ -115,6 +121,8 @@ switch:
       - switch.turn_off: mmwave_sensor
       - delay: 1s
       - uart.write: "setGpioMode 1 1\r\n"
+      - delay: 1s
+      - uart.write: "saveConfig\r\n"
       - delay: 1s
       - switch.turn_on: mmwave_sensor 
       - lambda: |-
@@ -131,6 +139,8 @@ switch:
       - delay: 1s
       - uart.write: "setGpioMode 2 0\r\n"
       - delay: 1s
+      - uart.write: "saveConfig\r\n"
+      - delay: 1s
       - switch.turn_on: mmwave_sensor
       - lambda: |-
           leapmmw(id(uart_bus)).getmmwConf("getGpioMode 2"); 
@@ -139,6 +149,8 @@ switch:
       - switch.turn_off: mmwave_sensor
       - delay: 1s
       - uart.write: "setGpioMode 2 1\r\n"
+      - delay: 1s
+      - uart.write: "saveConfig\r\n"
       - delay: 1s
       - switch.turn_on: mmwave_sensor 
       - lambda: |-
