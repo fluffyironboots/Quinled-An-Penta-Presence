@@ -16,6 +16,7 @@ esphome:
   #  - uart=https://github.com/plerup/espsoftwareserial.git#6.17.1   # fix for uart issues on 6.12.7 which crashes esp8266
   #  - uart=https://github.com/plerup/espsoftwareserial.git
 
+
 #logger:
 #  logs:
 #    sensor: DEBUG # reduced logging to minimize web_server target overload..
