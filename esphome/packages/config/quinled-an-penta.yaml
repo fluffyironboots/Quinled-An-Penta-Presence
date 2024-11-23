@@ -69,7 +69,7 @@ output:
 light:
   - platform: rgb
     name: "RGB"
-    id: "rgb"
+    id: "${id_name}_rgb"
     red: LED_channel_1
     green: LED_channel_2
     blue: LED_channel_3
@@ -77,7 +77,7 @@ light:
     restore_mode: RESTORE_DEFAULT_OFF
   - platform: cwww
     name: "White"
-    id: "cwww"
+    id: "${id_name}_cwww"
     cold_white: LED_channel_4
     warm_white: LED_channel_5
     cold_white_color_temperature: 6000 K
