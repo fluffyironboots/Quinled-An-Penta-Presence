@@ -68,16 +68,16 @@ output:
     id: LED_channel_5
 light:
   - platform: rgb
-    name: "${friendly_name} RGB"
-    id: "${id_name}_rgb"
+    name: "RGB"
+    id: "rgb"
     red: LED_channel_1
     green: LED_channel_2
     blue: LED_channel_3
     default_transition_length: 3s
     restore_mode: RESTORE_DEFAULT_OFF
   - platform: cwww
-    name: "${friendly_name} White"
-    id: "${id_name}_cwww"
+    name: "White"
+    id: "cwww"
     cold_white: LED_channel_4
     warm_white: LED_channel_5
     cold_white_color_temperature: 6000 K
@@ -90,5 +90,5 @@ sensor:
   - platform: internal_temperature
     name: "CPU Temperature"
   - platform: uptime
-    name: "${name}_Uptime Sensor"
+    name: "Uptime Sensor"
 
