@@ -9,8 +9,8 @@ esphome:
     name: "FluffyIronBoots.AIOsense"
     version: "${version}"
 
-logger:
-  baud_rate: 0  # disable logging via UART
+#logger:
+ # baud_rate: 0  # disable logging via UART
 
 captive_portal:
 
