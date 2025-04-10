@@ -43,7 +43,7 @@ binary_sensor:
     on_press:
       then:
         - light.turn_on: 
-            id: ${id_name}_cwww
+            id: "${id_name}_cwww"
         lambda: !lambda |-
           if (!id(mmwave_sensor).state) {
             id(mmwave_sensor).publish_state(true);
@@ -51,7 +51,7 @@ binary_sensor:
     on_release:
       then:
         - light.turn_off: 
-            id: ${id_name}_cwww
+            id: "${id_name}_cwww"
     
 sensor:      
   - platform: custom
