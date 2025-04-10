@@ -84,7 +84,7 @@ light:
     warm_white_color_temperature: 3000 K
     default_transition_length: 3s
     restore_mode: RESTORE_DEFAULT_OFF
-    constant_brightness: true
+    #constant_brightness: true
 
 sensor:
   - platform: internal_temperature
