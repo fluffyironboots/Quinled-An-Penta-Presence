@@ -42,10 +42,14 @@ binary_sensor:
     # when motion is detected, the radar sensor is on so publish radar state to HA
     on_press:
       then:
-        lambda: !lambda |-
+        - switch.turn_on: ${id_name}_cwww
+        - lambda: !lambda |-
           if (!id(mmwave_sensor).state) {
             id(mmwave_sensor).publish_state(true);
           }
+    on_release:
+      then:
+        - switch.turn_off: ${id_name}_cwww
     
 sensor:      
   - platform: custom
